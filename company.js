@@ -23,7 +23,6 @@ const spinner = document.getElementById("spinner2");
             return
         }
         const data = await response.json()
-        console.log(data)
         hideLoader()
         displayCompanyInfo(data.profile)
     }
@@ -47,7 +46,15 @@ function displayCompanyInfo (data) {
     companyImg.src = image
     companyInfo.innerHTML = description
     compName.innerHTML = companyName
-    stockInfo.innerHTML = ` Stock price: ${price}, ( ${changesPercentage})`
+ 
+  if (changesPercentage.value < 0) {
+    stockInfo.innerHTML = ` Stock price: ${price}, ( ${changesPercentage.fontcolor("red")})`}
+    else {
+      stockInfo.innerHTML = ` Stock price: ${price}, ( ${changesPercentage.fontcolor("lightgreen")})`
+    }
+
+
+   
 }
 
 (async function fetchStockHistory() {
@@ -58,7 +65,6 @@ function displayCompanyInfo (data) {
             return
         }
         const data = await response.json()
-        console.log(data)
         
         length = data.historical.length;
         let labels = [];
