@@ -43,8 +43,7 @@ async function getResults() {
         }
         resultsList.appendChild(temporaryContainer)
     }
-        
-    
+
 
 function showLoader() {
     loader.classList.remove("hide");

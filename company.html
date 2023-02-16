@@ -17,34 +17,31 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./styles.css" />
-    <title>
-      Stock Exchange Fun Times (i.e. the rich making money by being rich)
-    </title>
+    <title>Company Deets</title>
   </head>
   <body>
-    <div class="d-flex justify-content-center">
-      <h3 class="title">Stock Exchange Investigator</h3>
-      <p class="title">
-        (not for tax evasion though; apparently no one investigates that)
-      </p>
+    <div class="header d-flex">
+      <img id="img" alt="company logo"></img>
+      <div id="company-name"></div>
     </div>
-    <form class="flex-container" action="">
-      <input
-        type="text"
-        placeholder="Enter your query here.."
-        id="search-input"
-        class="search-input"
-      />
-      <button type="submit" class="search-btn" id="search-btn">Search</button>
-    </form>
     <div class="d-flex justify-content-center">
-      <div class="spinner-border hide" role="status" id="spinner">
+      <div class="spinner-border hide" role="status" id="spinner2">
         <span class="sr-only"></span>
       </div>
     </div>
-    <div class="results-container">
-      <ul class="results-list" id="results-list"></ul>
+    <div class="d-flex" id="stock-info">Stock price:
     </div>
-    <script src="./index.js"></script>
+    <div class="company-info d-flex" id="company-info"></div>
+    <div>
+      <canvas class="graphic d-flex-center" id="myChart"></canvas>
+    </div>
+    <div class="footer">
+      <a class="btn btn-light" href="./index.html" role="button" id="back-button">Back to Home</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script src="./company.js"></script>
   </body>
 </html>

@@ -21,7 +21,7 @@ body, html {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 10px;
     margin-bottom: 0;
 }
 .search-input {
@@ -93,4 +93,63 @@ a:hover {
 a:active {
     text-decoration: none;
     color: blue
+ }
+
+ .d-flex {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+
+ }
+ .header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+ }
+
+ .d-flex-center {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+ }
+ #stock-info {
+    font-weight: bold;
+    padding-bottom: 12px;
+  
+ }
+ #company-info {
+    font-size: .8rem;
+ }
+ #company-name {
+    font-size: 2rem;
+    margin-left: 8px;
+
+
+ }
+ #img {
+    width: 50px;
+    height: 50px;
+    padding-left: 0;
+    margin-right: 8px;
+    
+ }
+ #myChart {
+    width: 80%;
+    margin-bottom: 12px;
+ }
+
+ #back-button {
+    margin-bottom: 8px;
+    margin-top: 8px;
+   
+ }
+ .title {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-bottom: 4px;
  }
