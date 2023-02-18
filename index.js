@@ -3,6 +3,8 @@ const searchInput = document.getElementById("search-input");
 const loader = document.getElementById("spinner");
 const resultsList = document.getElementById("results-list");
 const baseLink = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/`
+const getCompanyDetails = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/`
+
 
 
 async function getResults() {
@@ -25,25 +27,51 @@ async function getResults() {
             hideLoader()
         }
     }
+  
+
+    
     function generateResultList(response) {  
         resultsList.innerHTML = ""
-        const temporaryContainer = document.createDocumentFragment()
         for (let i = 0; i< response.length; i++) {
-            const companyInfo = response[i]
-            const companyValues = Object.values(companyInfo);
-            const name = companyValues[1]
-            const symbol = companyValues[0]
-            const a = document.createElement('a')
-            const newItem = document.createElement("li");
-            newItem.innerHTML = `${name}  ${symbol}`
-            a.appendChild(newItem)
-            a.href = `./company.html?symbol=${symbol}`
-            a.target = "blank"
-            temporaryContainer.appendChild(a)
-        }
-        resultsList.appendChild(temporaryContainer)
+            const { symbol } = response[i]
+        
+            getMoreDetails(`${getCompanyDetails}${symbol}`)
+           
+}
     }
+    
+    async function getMoreDetails(link) {   
+        const temporaryContainer = document.createDocumentFragment()
+        try {
+        showLoader()
+         const resp = await fetch (link)
+         if (!resp.ok) {
+             handleResponseError(resp)
+             hideLoader()
+         }
+         const compData = await resp.json()
+         hideLoader()
+         const { image, changesPercentage, companyName } = compData.profile 
+         const { symbol } = compData
+         const a = document.createElement('a')
+         const newItem = document.createElement("li");
+         const percentageNum = parseFloat(changesPercentage)
 
+         if (percentageNum < 0) {
+
+         newItem.innerHTML = `<img src=${image}></img>  ${companyName}  (${symbol}) (${changesPercentage.fontcolor("red")})` } 
+
+         else {
+              newItem.innerHTML = `<img src= ${image}></img>  ${companyName}  (${symbol}) (${changesPercentage.fontcolor("lightgreen")})`
+         }
+         a.appendChild(newItem)
+         a.href = `./company.html?symbol=${symbol}`
+         temporaryContainer.appendChild(a)
+         resultsList.appendChild(temporaryContainer)
+     } catch (err) {
+         console.log(err)
+     } 
+ }
 
 function showLoader() {
     loader.classList.remove("hide");

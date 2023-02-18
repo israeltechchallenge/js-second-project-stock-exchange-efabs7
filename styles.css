@@ -75,12 +75,18 @@ li {
     padding-bottom: 8px;
     border-bottom: 1px solid #bfbfbf;
     display: flex;
+    flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: center;
     padding-right: 20px;
     padding-top: 6px;
     margin-left: 20px;
 
+}
+li > img {
+    height: 14px;
+    width: 14px;
+    margin-right: 12px
 }
 a {
     text-decoration: none;
@@ -110,7 +116,7 @@ a:active {
 
  .d-flex-center {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
     padding: 20px;
@@ -153,3 +159,9 @@ a:active {
     justify-content: center;
     margin-bottom: 4px;
  }
+
+ .title > p {
+    color: rgb(5, 5, 94);
+ }
+
+

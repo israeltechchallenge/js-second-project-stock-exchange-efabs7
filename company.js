@@ -42,12 +42,12 @@ function displayCompanyInfo (data) {
     stockInfo.innerHTML = ""
 
     const { price, image, companyName, changesPercentage, description } = data
-
+    const percentageInt = parseFloat(changesPercentage)
     companyImg.src = image
     companyInfo.innerHTML = description
     compName.innerHTML = companyName
  
-  if (changesPercentage.value < 0) {
+  if (percentageInt < 0) {
     stockInfo.innerHTML = ` Stock price: ${price}, ( ${changesPercentage.fontcolor("red")})`}
     else {
       stockInfo.innerHTML = ` Stock price: ${price}, ( ${changesPercentage.fontcolor("lightgreen")})`
