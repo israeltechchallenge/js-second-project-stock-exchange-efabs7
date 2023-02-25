@@ -1,15 +1,3 @@
-const searchButton = document.getElementById("search-btn");
-const searchInput = document.getElementById("search-input");
-const loader = document.getElementById("spinner");
-const resultsList = document.getElementById("results-list");
-const baseLink = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/`
-const getCompanyDetails = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/`
-const allStocksLink = `${baseLink}stock/list`
-const marquee = document.getElementById("marquee")
-const loadingText = document.getElementById("loading-text")
-
-
-
 
 async function getResults() {
     try {
@@ -31,8 +19,6 @@ async function getResults() {
             hideLoader()
         }
     }
-  
-
     
     function generateResultList(response) {  
         resultsList.innerHTML = ""
@@ -76,57 +62,6 @@ async function getResults() {
          console.log(err)
      } 
  }
-
-(async function getMarqueeResults() {
-    try {
-        const response = await fetch (allStocksLink)
-        showLoader()
-        loadingText.classList.remove("hidden")
-        if (!response.ok) {
-            handleResponseError(response)
-            hideLoader()
-            return
-        }
-        const stockList = await response.json()
-        loadingText.classList.add("hidden")
-        hideLoader()
-       
-        const temporaryBox = document.createDocumentFragment()
-       stockList.forEach((element) => {
-        const marqText = document.createElement("p")
-        const marqNum = document.createElement("p")
-        const symbol = element.symbol
-        const price = element.price
-        marqText.innerHTML = `${symbol}: `
-        marqNum.innerHTML = ` ($${price})`
-        marqNum.style.color = "green"
-        temporaryBox.appendChild(marqText)
-        temporaryBox.appendChild(marqNum)
-        marquee.appendChild(temporaryBox)
-        
-    })
-}
-    catch (err) {
-        console.log(err)
-
-    }
-})()
-
-function showLoader() {
-    loader.classList.remove("hide");
-}
-
-function hideLoader() {
-    loader.classList.add("hide");
-}
-
-function handleResponseError (response) {
-    response.text().then(text => {
-        const badMessage = document.createElement("li");
-        badMessage.innerText = `There's been an error: ${text}`
-        resultsList.appendChild(badMessage);
-    })
-}
 
 searchButton.addEventListener("click", function(event) {
     event.preventDefault();

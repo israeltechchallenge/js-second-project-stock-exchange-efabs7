@@ -1,29 +1,16 @@
-const urlBaseProfile = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/`
-const urlSearch = window.location.search
-const params = new URLSearchParams(urlSearch)
-const companyCode = params.get('symbol')
-const companyInfoLink = `${urlBaseProfile}${companyCode}`
-const companyImg = document.getElementById("img")
-const compName = document.getElementById("company-name")
-const stockInfo = document.getElementById("stock-info")
-const companyInfo = document.getElementById("company-info")
-const ctx = document.getElementById("myChart");
-const spinner = document.getElementById("spinner2");
-
-
 
 (async function getCompanyInfo() {
 
     try {
-       showLoader()
+       showSpinner()
         const response = await fetch(companyInfoLink)
         if (!response.ok) {
             handleResponseError(response)
-            hideLoader()
+            hideSpinner()
             return
         }
         const data = await response.json()
-        hideLoader()
+        hideSpinner()
         displayCompanyInfo(data.profile)
     }
     catch (err) {
@@ -106,13 +93,7 @@ function displayCompanyInfo (data) {
 
 })()
 
-function showLoader() {
-  spinner.classList.remove("hide");
-}
 
-function hideLoader() {
-  spinner.classList.add("hide");
-}
 
 
 

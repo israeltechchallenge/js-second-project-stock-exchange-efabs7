@@ -52,6 +52,14 @@
     <div class="results-container">
       <ul class="results-list" id="results-list"></ul>
     </div>
+    <script src="./helpers.js"></script>
     <script src="./index.js"></script>
+    <script src="./marquee.js"></script>
+    <script>
+      (async function () {
+        const indexMarquee = new Marquee(document.getElementById("marquee"));
+        indexMarquee.getMarqueeResults();
+      })();
+    </script>
   </body>
 </html>
