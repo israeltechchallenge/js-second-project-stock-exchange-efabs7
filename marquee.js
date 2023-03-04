@@ -1,21 +1,21 @@
 
 
 class Marquee {
-    constructor(element) {
-        this.element = element;
+    constructor(div) {
+        this.div = div;
+
     }
     async getMarqueeResults() {
         try {
             const response = await fetch (allStocksLink)
             showLoader()
-            loadingText.classList.remove("hidden")
+        
             if (!response.ok) {
                 handleResponseError(response)
                 hideLoader()
                 return
             }
             const stockList = await response.json()
-            loadingText.classList.add("hidden")
             hideLoader()
             const abbStockList = stockList.slice(0, 30)
             const temporaryBox = document.createDocumentFragment()
@@ -29,7 +29,7 @@ class Marquee {
             marqNum.style.color = "green"
             temporaryBox.appendChild(marqText)
             temporaryBox.appendChild(marqNum)
-            marquee.appendChild(temporaryBox)
+            this.div.appendChild(temporaryBox)
             
         })
     }

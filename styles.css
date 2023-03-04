@@ -12,10 +12,21 @@
 
 body, html {
     min-height: 100%;
-    margin-left: 3%;
-    margin-right: 3%;
+  
 }
 
+#form {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+#results {
+    margin-top: 18px;
+}
 .flex-container {
     display: flex;
     flex-flow: row nowrap;
@@ -84,17 +95,17 @@ li {
 
 }
 li > img {
-    height: 14px;
-    width: 14px;
-    margin-right: 12px
+    height: 30px;
+    width: 30px;
+    margin-right: 16px
 }
 a {
     text-decoration: none;
-    color: rgb(115, 58, 115)
+    color: black
 }
 a:hover {
     cursor: pointer;
-    color: black;
+    color: rgb(115, 58, 115);
 }
 a:active {
     text-decoration: none;
@@ -160,8 +171,42 @@ a:active {
     margin-bottom: 4px;
  }
 
- .title > p {
+.navy {
     color: rgb(5, 5, 94);
  }
 
+ .marquee {
+   width: 100%;
+   height: 40px;
+   background-color: #e4e8e7;
+   padding-top: 6px;
+   border-bottom: 1px black;
+   color: rgb(14, 15, 14);
+   display: flex;
+   align-items: center;
+   overflow: hidden;
+
+}
+
+.marquee > p {
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    animation: marquee 10s linear infinite;
+}
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%)
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+
+  .hidden {
+    visibility: hidden;
+  }
 
