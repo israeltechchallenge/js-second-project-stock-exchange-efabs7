@@ -53,6 +53,9 @@ class SearchForm {
       this.generateResultList(valuesArray);
     } catch (err) {
       console.log(err);
+      document.getElementById(
+        "results"
+      ).innerHTML = `There has been an issue, it's that we don't tax the rich enough`;
       hideLoader();
     }
   }
@@ -70,14 +73,14 @@ class SearchForm {
         const compData = await resp.json();
         hideLoader();
         const { image, changesPercentage, companyName } = compData.profile;
-
-        handleImgError(image);
-
         const symb = compData.symbol;
         this.showResultList(symb, image, companyName, changesPercentage);
       }
     } catch (err) {
       console.log(err);
+      document.getElementById(
+        "results"
+      ).innerHTML += `<li>There has been an issue loading this info. But the biggest issue is that we don't tax the rich enough.</li>`;
     }
   }
   showResultList = (smbl, img, compName, changeP) => {
@@ -85,21 +88,22 @@ class SearchForm {
     const resultsList = document.createElement("ul");
     const a = document.createElement("a");
     const newItem = document.createElement("li");
+    const innerItem = document.createElement("span");
     const percentageNum = parseFloat(changeP);
     let searchTerm = this.input.value;
 
+    innerItem.innerHTML = `${compName}  (${smbl})`;
+    innerItem.innerHTML = showHighlighted(searchTerm, innerItem.innerHTML);
+
     if (percentageNum < 0) {
-      newItem.innerHTML = `<img src=${img}></img>  ${compName}  (${smbl}) (${changeP.fontcolor(
-        "red"
-      )})`;
+      newItem.innerHTML = `<img src=${img}></img> ${
+        innerItem.innerHTML
+      }  (${changeP.fontcolor("red")})`;
     } else {
-      newItem.innerHTML = `<img src= ${img}></img>  ${compName}  (${smbl}) (${changeP.fontcolor(
-        "lightgreen"
-      )})`;
+      newItem.innerHTML = `<img src= ${img}></img> ${
+        innerItem.innerHTML
+      } (${changeP.fontcolor("lightgreen")})`;
     }
-
-    showHighlighted(searchTerm, newItem.innerHTML);
-
     a.appendChild(newItem);
     a.href = `./company.html?symbol=${smbl}`;
     resultsList.appendChild(a);

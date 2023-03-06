@@ -51,15 +51,15 @@ function handleResponseError() {
   errorContainer.appendChild(badMessage);
 }
 
-function showHighlighted(searchTerm, toHighlight) {
+function showHighlighted(searchTerm, toHighLight) {
   searchTerm.toLowerCase();
   let replace = new RegExp(searchTerm, "gi");
-  let highlighted = toHighlight.replace(replace, `<mark>${searchTerm}</mark>`);
-  console.log(highlighted);
-  toHighlight.innerHTML = highlighted;
-  console.log("i have highlighted");
+  let highlighted = toHighLight.replace(replace, `<mark>${searchTerm}</mark>`);
+  return highlighted;
 }
 
 function handleImgError(image) {
-  image.onerror = "./rugby.png";
+  image.innerHTML = `<img onerror = "./rugby.png">`;
+  console.log(image.innerHTML);
 }
+//work on this
