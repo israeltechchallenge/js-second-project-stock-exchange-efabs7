@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis&family=Open+Sans:wght@400;600&family=Poppins:wght@400;500;600&family=Prosto+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/x-icon" href="./rugby.png" />
+    <title>Company Deets</title>
+  </head>
+  <body>
+    <div class="header d-flex">
+      <img id="img" alt="company logo"></img>
+      <div id="company-name"></div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border hide" role="status" id="spinner2">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+    <div class="d-flex" id="stock-info">Stock price:
+    </div>
+    <div class="company-info d-flex" id="company-info"></div>
+    <div>
+      <canvas class="graphic d-flex-center" id="myChart"></canvas>
+    </div>
+    <div class="footer">
+      <a class="btn btn-light" href="./index.html" role="button" id="back-button">Back to Home</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="./helpers.js"></script>
+    <script src="./company.js"></script>
+  </body>
+</html>
